@@ -1,4 +1,4 @@
-import { gameState, inputState, resetPlayerPosition } from './state.js';
+import { gameState, inputState, player, resetPlayerPosition } from './state.js';
 import { renderScene } from './render.js';
 import { updateGame } from './systems.js';
 
@@ -55,7 +55,7 @@ function gameLoop(timestamp) {
   lastTimestamp = timestamp;
 
   updateGame(dt);
-  renderScene(ctx);
+  renderScene(ctx, gameState);
 
   requestAnimationFrame(gameLoop);
 }

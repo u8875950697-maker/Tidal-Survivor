@@ -25,8 +25,8 @@ function renderPlayer(ctx) {
 }
 
 function renderEnemies(ctx) {
+  ctx.fillStyle = '#f87171';
   for (const enemy of gameState.enemies) {
-    ctx.fillStyle = enemy.type === 'tank' ? '#f97316' : '#f87171';
     ctx.beginPath();
     ctx.arc(enemy.x, enemy.y, enemy.radius, 0, Math.PI * 2);
     ctx.fill();
@@ -51,15 +51,6 @@ function renderXpOrbs(ctx) {
   }
 }
 
-function formatTime(seconds) {
-  const clamped = Math.max(0, Math.floor(seconds));
-  const mins = Math.floor(clamped / 60)
-    .toString()
-    .padStart(2, '0');
-  const secs = (clamped % 60).toString().padStart(2, '0');
-  return `${mins}:${secs}`;
-}
-
 function renderUI(ctx) {
   ctx.fillStyle = '#e5e7eb';
   ctx.font = '16px "Segoe UI", sans-serif';
@@ -72,14 +63,13 @@ function renderUI(ctx) {
   );
 
   ctx.textAlign = 'right';
-  ctx.fillText(`Time: ${formatTime(gameState.time)} / ${formatTime(gameState.runDuration)}`, gameState.width - 16, 28);
+  ctx.fillText(`Time: ${gameState.time.toFixed(1)}s`, gameState.width - 16, 28);
 
-  if (gameState.isGameOver || gameState.isVictory) {
+  if (gameState.isGameOver) {
     ctx.textAlign = 'center';
     ctx.fillStyle = '#fef2f2';
     ctx.font = '48px "Segoe UI", sans-serif';
-    const message = gameState.isVictory ? 'VICTORY' : 'GAME OVER';
-    ctx.fillText(message, gameState.width / 2, gameState.height / 2);
+    ctx.fillText('GAME OVER', gameState.width / 2, gameState.height / 2);
   }
 }
 

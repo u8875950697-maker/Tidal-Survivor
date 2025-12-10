@@ -5,24 +5,16 @@ export const inputState = {
   right: false,
 };
 
-export const RUN_DURATION = 540; // 9 minutes
-
-const PLAYER_START_HP = 100;
-const PLAYER_START_SPEED = 220;
-const PLAYER_BASE_DAMAGE = 15;
-const PLAYER_FIRE_RATE = 3;
-const PLAYER_RADIUS = 18;
-
 export const player = {
   x: 0,
   y: 0,
-  radius: PLAYER_RADIUS,
-  speed: PLAYER_START_SPEED,
-  hp: PLAYER_START_HP,
-  maxHp: PLAYER_START_HP,
-  baseDamage: PLAYER_BASE_DAMAGE,
+  radius: 18,
+  speed: 220,
+  hp: 100,
+  maxHp: 100,
+  baseDamage: 15,
   damageMultiplier: 1,
-  fireRate: PLAYER_FIRE_RATE,
+  fireRate: 3,
   fireCooldown: 0,
   level: 1,
   currentXP: 0,
@@ -33,15 +25,13 @@ export const gameState = {
   width: window.innerWidth,
   height: window.innerHeight,
   time: 0,
-  runDuration: RUN_DURATION,
   isGameOver: false,
-  isVictory: false,
   enemies: [],
   bullets: [],
   xpOrbs: [],
   enemySpawnTimer: 0,
-  enemySpawnInterval: 1.2,
-  enemySpawnIntervalMin: 0.4,
+  enemySpawnInterval: 2.0,
+  enemySpawnIntervalMin: 0.5,
 };
 
 export function resetPlayerPosition() {
